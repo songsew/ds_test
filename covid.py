@@ -9,7 +9,7 @@
 
 # In[1]:
 
-
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,7 +29,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # In[2]:
 
 
-df = pd.read_csv('./data/national-pension-202006.csv')
+df = pd.read_csv('./lop/data/national-pension-202006.csv')
 
 
 # In[3]:
@@ -487,7 +487,7 @@ plt.show()
 def compare_and_visualize(company):
     code = df[df['사업장명'] == company]['업종코드']
     cols = ['가입자수', '평균월급', '평균연봉', '신규', '상실', '업종코드']
-    filtered = df.loc[df['업종코드']==code.item()][cols]
+    filtered = df.loc[df['업종코드']==code.items()][cols]
     df_company = df.loc[df['사업장명'] == company][cols]
     df_company = df_company.append(pd.Series(filtered.mean()), ignore_index=True)
     
@@ -503,7 +503,7 @@ def compare_and_visualize(company):
 
 
 compare_and_visualize('패스트캠퍼스')
-
+#keyerror
 
 # In[ ]:
 
